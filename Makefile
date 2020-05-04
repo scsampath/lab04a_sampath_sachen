@@ -3,14 +3,18 @@ CXX=clang++
 
 CXXFLAGS = -std=c++11 -Wall -Wextra -Werror
 
-BINARIES=testMyHashTable
+BINARIES=testInsert testDelete
 
 all: ${BINARIES}
 
 tests: ${BINARIES}
-	./testMyHashTable
+	./testInsert
+	./testDelete
 
-testMyHashTable: testMyHashTable.o WordCount.o tddFuncs.o
+testInsert: testInsert.o WordCount.o tddFuncs.o
+	${CXX} $^ -o $@
+
+testDelete: testDelete.o WordCount.o tddFuncs.o
 	${CXX} $^ -o $@
 
 clean:
